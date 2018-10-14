@@ -1,0 +1,75 @@
+*{
+  margin: 0 auto;
+}
+hidden {
+  display: none;
+}
+
+.background {
+  background: rgb(52, 166, 251);
+  table-layout: fixed;
+  border-spacing: 0;
+}
+
+.background td {
+  padding: 0;
+}
+
+.fireball {
+  background-image: url(https://i.lensdump.com/i/8aMIjT.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+}
+
+.lava {
+  background-image: url(https://i.lensdump.com/i/8aMgM7.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  
+}
+
+.elevator {
+  background: rgb(229, 229, 229);
+}
+
+.wall {
+  background-image: url(https://i.lensdump.com/i/8aMrhr.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.actor {
+  position: absolute;
+}
+
+.coin {
+  background-image: url(https://i.lensdump.com/i/8aMZdb.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.player {
+  background-image: url(https://i.lensdump.com/i/8aMRz3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.lost .player {
+  background-image: url(https://i.lensdump.com/i/A2Ojio.png);
+}
+
+.won .player {
+  background-image: url(https://i.lensdump.com/i/A2O0d9.png);
+}
+
+.game {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative;
+}
