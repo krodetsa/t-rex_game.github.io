@@ -26,6 +26,8 @@ const playerXSpeed = 6;
 const gravity = 50;
 const jumpSpeed = 17;
 const jump = document.getElementById("jump")
+const death = document.getElementById("death")
+const music = document.getElementById("music")
 
 function elt(name, className) {
   var elt = document.createElement(name);
@@ -199,7 +201,8 @@ function initGameObjects() {
       if (this.status === 'lost') {
         this.player.pos.y += thisStep;
         this.player.size.y -= thisStep;
-        /* звук проигрыша*/
+		death.play();
+        /* Р·РІСѓРє РїСЂРѕРёРіСЂС‹С€Р°*/
       }
 
       step -= thisStep;
@@ -267,18 +270,23 @@ function runGame(plans, Parser, Display) {
           }
         });
     }
-    startLevel(0);
-  });
+    startLevel(5);
+  });	
 }
 
 function rand(max = 10, min = 0) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+window.onload = function() {
+	music.play();
+	music.volume=0.25;
+  };
+
 addEventListener("keydown", playSounds);
 function playSounds(e) {
   if (e.keyCode == '38') {
-    jump.play();// up arrow
+    jump.play();
   }if (e.keyCode == 37 || e.keyCode == 39) {
     
   }
