@@ -1,4 +1,6 @@
 'use strict';
+const levelpassed = document.getElementById("levelpassed")
+const coin = document.getElementById("coin")
 class Vector {
   constructor(x=0, y=0) {
     this.x = x;
@@ -7,7 +9,7 @@ class Vector {
 
   plus(plusVector) {
     if (!(plusVector instanceof Vector)) {
-        throw new Error('Можно прибавлять к вектору только Vector.');
+        throw new Error('РњРѕР¶РЅРѕ РїСЂРёР±Р°РІР»СЏС‚СЊ Рє РІРµРєС‚РѕСЂСѓ С‚РѕР»СЊРєРѕ Vector.');
     }
     return new Vector(this.x + plusVector.x, this.y + plusVector.y);
   }
@@ -20,7 +22,7 @@ class Vector {
 class Actor {
   constructor(pos = new Vector(0, 0), size = new Vector(1, 1), speed = new Vector(0, 0)) {
     if (!((pos instanceof Vector)&&(size instanceof Vector)&&(speed instanceof Vector))) {
-      throw new Error('pos не является объектом типа Vector.');
+      throw new Error('pos РЅРµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚РѕРј С‚РёРїР° Vector.');
     }
     this.pos = pos;
     this.size = size;
@@ -49,7 +51,7 @@ class Actor {
 
   isIntersect(moveActor) {
     if (!(moveActor instanceof Actor)) {
-      throw new Error('moveActor не является объектом типа Actor');
+      throw new Error('moveActor РЅРµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚РѕРј С‚РёРїР° Actor');
     }
     if (this === moveActor) {
       return false;
@@ -76,14 +78,14 @@ class Level {
 
   actorAt(moveActor) {
     if (!(moveActor instanceof Actor)) {
-      throw new Error("moveActor не является объектом типа Actor");
+      throw new Error("moveActor РЅРµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚РѕРј С‚РёРїР° Actor");
     }
     return this.actors.find(actor => actor.isIntersect(moveActor));
   }
 
   obstacleAt(position, size) {
     if (!((position instanceof Vector)&&(size instanceof Vector))) {
-      throw new Error("Передан не вектор.");
+      throw new Error("РџРµСЂРµРґР°РЅ РЅРµ РІРµРєС‚РѕСЂ.");
     }
 
     const topBorder = Math.floor(position.y), bottomBorder = Math.ceil(position.y + size.y), leftBorder = Math.floor(position.x), rightBorder = Math.ceil(position.x + size.x);
@@ -125,8 +127,13 @@ class Level {
     }
     if (touched === 'coin' && actor.type === 'coin') {
       this.removeActor(actor);
+	coin.play();
+    coin.currentTime = 0;
       if (this.noMoreActors('coin')) {
         this.status = 'won';
+	console.log("won")
+	   music.currentTime = 0;
+   levelpassed.play();
       }
     }
   }
@@ -275,9 +282,9 @@ const schemas = [
     '      v          v  ',
     '   v             =  ',
     '         o          ',
-    ' @                 o',
+    ' @              x  o',
     '    xx  xx         x',
-    'xx         xxx      ',
+    'xx          x       ',
     '!!!!!!!!!!!!!!!!!!!!'
   ],
   [
@@ -285,10 +292,88 @@ const schemas = [
     '    =                             o ',
     '                              o  xxx',
     '        o    =            o         ',
-    ' @     xxx                          ',
+    ' @    x                          ',
     '          o  xxx            o  xxx  ',
     'xxx      xxx        xxxxx           ',
     '!!!!!!!!!!!!!!!!!!!!!!!!!!!xxx!!!!!!'
+  ],
+[
+    "     v                 ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "  o                 o  ",
+    "  x               = x  ",
+    "  x          o o    x  ",
+    "  x  @   x   xxxxx  x  ",
+    "  xxxxx             x  ",
+    "      x!!!!!!!!!!!!!x  ",
+    "      xxxxxxxxxxxxxxx  ",
+    "                       "
+  ],
+  [
+    "        |           |  ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "            o    x     ",
+    "            x          ",
+    "            =         x",
+    "                       ",
+    "                   x   ",
+    "         =     x|      ",
+    "@ |   o    x       o   ",
+    "xxxxxxxxx!!!!!!!xxxxxxx",
+    "                       "
+  ],
+  [
+    "                       ",
+    "                       ",
+    "                       ",
+    "    o                  ",
+    "    x      | x!!x=     ",
+    "         x             ",
+    " x                    x",
+    "                       ",
+    "                   x   ",
+    "                       ",
+    "               xxx     ",
+    "                       ",
+    "             x         ",
+    "       xxx  |          ",
+    "                       ",
+    " @   x                 ",
+    "xxx                    ",
+    "                       "
+  ], [
+    "      v         v      ",
+    "                       ",
+    "            |o|        ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "                       ",
+    "           xxxx        ",
+    "             o         ",
+    "           =           ",
+    "     @        x        ",
+    "     xxxx              ",
+    "     |                 ",
+    "         xxx           ",
+    "                x      ",
+    "             !         ",
+    "                    x  ",
+    "                       ",
+    "    o       x    x     ",
+    "    x      x       =   ",
+    "          x   x        ",
+    "         x             ",
+    "      xx               ",
+    "                       "
   ]
 ];
 const actorDict = {
@@ -300,4 +385,5 @@ const actorDict = {
 };
 const parser = new LevelParser(actorDict);
 runGame(schemas, parser, DOMDisplay)
-  .then(() => alert('Поздравляю, Вы прошли игру!'));
+  .then(() => alert('Поздравляю, вы прошли игру!'));
+
