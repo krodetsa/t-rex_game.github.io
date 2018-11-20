@@ -270,7 +270,7 @@ function runGame(plans, Parser, Display) {
           }
         });
     }
-    startLevel(0);
+    startLevel(1);
   });	
 }
 
