@@ -1,24 +1,5 @@
 'use strict';
-
-function loadLevels() {
-  return new Promise((done, fail) => {
-    const xhr = new XMLHttpRequest();
-    let url = './levels.json';
-    if (location.hostname !== 'localhost') {
-      url = 'https://neto-api.herokuapp.com/js/diplom/levels.json';
-    }
-    xhr.open('GET', url);
-    xhr.addEventListener('error', e => fail(xhr));
-    xhr.addEventListener('load', e => {
-      if (xhr.status !== 200) {
-        fail(xhr);
-      }
-      done(xhr.responseText);
-    });
-    xhr.send();
-  });
-}
-
+var trex = document.getElementsByClassName('player');
 const scale = 30;
 const maxStep = 0.05;
 const wobbleSpeed = 8, wobbleDist = 0.07;
@@ -197,14 +178,6 @@ function initGameObjects() {
         actor.act(thisStep, this, keys);
 
       });
-
-      if (this.status === 'lost') {
-        this.player.pos.y += thisStep;
-        this.player.size.y -= thisStep;
-		death.play();
-        /* Р·РІСѓРє РїСЂРѕРёРіСЂС‹С€Р°*/
-      }
-
       step -= thisStep;
     }
   };
@@ -259,6 +232,8 @@ function initGameObjects() {
 function runGame(plans, Parser, Display) {
   return new Promise(done => {
     function startLevel(n) {
+      music.currentTime = 0;
+      music.play();
       runLevel(Parser.parse(plans[n]), Display)
         .then(status => {
           if (status == "lost") {
@@ -270,8 +245,9 @@ function runGame(plans, Parser, Display) {
           }
         });
     }
-    startLevel(1);
-  });	
+    startLevel(0);
+  });
+
 }
 
 function rand(max = 10, min = 0) {
@@ -279,15 +255,18 @@ function rand(max = 10, min = 0) {
 }
 
 window.onload = function() {
-	music.play();
 	music.volume=0.25;
   };
 
 addEventListener("keydown", playSounds);
+
 function playSounds(e) {
-  if (e.keyCode == '38') {
+  if (e.keyCode == 38) {
     jump.play();
-  }if (e.keyCode == 37 || e.keyCode == 39) {
-    
+  }if (e.keyCode == 37 ) {
+    trex[0].style.cssText= 'transform: scaleX(1) !important'
+
+  }if (e.keyCode == 39){
+  trex[0].style.cssText= 'transform: scaleX(-1) !important'
   }
 }

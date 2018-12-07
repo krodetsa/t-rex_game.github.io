@@ -1,6 +1,15 @@
 'use strict';
+
 const levelpassed = document.getElementById("levelpassed")
+var lives = 3;
 const coin = document.getElementById("coin")
+const startThis = document.getElementById("game")
+const livesShown = document.getElementById("lives")
+livesShown.innerHTML = "lives: " + lives
+function removeButton(){
+  startThis.classList.add("hidden");
+  livesShown.classList.remove("hidden");
+}
 class Vector {
   constructor(x=0, y=0) {
     this.x = x;
@@ -124,6 +133,10 @@ class Level {
     }
     if (['lava', 'fireball'].some(element => element === touched )) {
       this.status = 'lost';
+      lives = lives-1;
+      music.pause();
+      death.play();
+      livesShown.innerHTML = "lives: " + lives;
     }
     if (touched === 'coin' && actor.type === 'coin') {
       this.removeActor(actor);
@@ -131,15 +144,14 @@ class Level {
     coin.currentTime = 0;
       if (this.noMoreActors('coin')) {
         this.status = 'won';
-	console.log("won")
-	   music.currentTime = 0;
-   levelpassed.play();
+	  console.log("won")
+	  music.currentTime = 0;
+    music.pause();
+    levelpassed.play();
       }
     }
   }
 }
-
-
 const obstaclesDict = {
   'x': 'wall',
   '!': 'lava'
@@ -284,7 +296,7 @@ const schemas = [
     '         o          ',
     ' @              x  o',
     '    xx  xx         x',
-    'xx          x       ',
+    'xx          xx      ',
     '!!!!!!!!!!!!!!!!!!!!'
   ],
   [
@@ -320,14 +332,14 @@ const schemas = [
     "                       ",
     "                       ",
     "                       ",
-    "            o    x     ",
-    "            x          ",
-    "            =         x",
     "                       ",
-    "                   x   ",
-    "         =     x|      ",
-    "@ |   o    x       o   ",
-    "xxxxxxxxx!!!!!!!xxxxxxx",
+    "            o          ",
+    "            x       x  ",
+    "            =          ",
+    "        x              ",
+    "                |     x",
+    "@ |   ox   x       o   ",
+    "xxxxxxxxx!!!!!!xxxxxxxx",
     "                       "
   ],
   [
@@ -335,11 +347,11 @@ const schemas = [
     "                       ",
     "                       ",
     "    o                  ",
-    "    x      | x!!x=     ",
-    "         x             ",
-    " x                    x",
-    "                       ",
-    "                   x   ",
+    "      x    |           ",
+    "         x   x!!x=  x  ",
+    " x                     ",
+    "                      x",
+    "                   xxx ",
     "                       ",
     "               xxx     ",
     "                       ",
@@ -352,7 +364,7 @@ const schemas = [
   ], [
     "      v         v      ",
     "                       ",
-    "            |o|        ",
+    "             o |       ",
     "                       ",
     "                       ",
     "                       ",
@@ -381,9 +393,11 @@ const actorDict = {
   'v': VerticalFireball,
   'o': Coin,
   '=': HorizontalFireball,
-  '|': FireRain  
+  '|': FireRain
 };
 const parser = new LevelParser(actorDict);
-runGame(schemas, parser, DOMDisplay)
-  .then(() => alert('Поздравляю, вы прошли игру!'));
+if (lives < 0)  {
+  music.currentTime = 0;
+  music.pause();
 
+}

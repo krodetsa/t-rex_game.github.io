@@ -6,9 +6,19 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<link rel="stylesheet" href="./index.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-	<audio id="jump" src="https://raw.githubusercontent.com/krodetsa/t-rex_game.github.io/master/jump.mp3"></audio>
+  <div id="game">
+    <button class="start" onclick="runGame(schemas, parser, DOMDisplay) ; removeButton()">START</button>
+
+  </div>
+  <p id="lives" class="hidden">lives</p>
+	<audio id="jump" src="./sounds/jump.mp3"></audio>
+	<audio id="coin" src="./sounds/coin.mp3"></audio>
+	<audio id="levelpassed" src="./sounds/levelpassed.mp3"></audio>
+	<audio id="death" src="./sounds/death.mp3"></audio>
+	<audio id="music" src="./sounds/8bit%20(Dendy-Nes)%20-%20Ultimate%20Stuntman%203.mp3?raw=true"></audio>
 	<script src="./props.js"></script>
 	<script src="./index.js"></script>
 </body>
