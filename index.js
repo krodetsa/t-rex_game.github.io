@@ -6,6 +6,7 @@ const coin = document.getElementById("coin")
 const startThis = document.getElementById("game")
 const livesShown = document.getElementById("lives")
 livesShown.innerHTML = "lives: " + lives
+
 function removeButton(){
   startThis.classList.add("hidden");
   livesShown.classList.remove("hidden");
@@ -133,7 +134,7 @@ class Level {
     }
     if (['lava', 'fireball'].some(element => element === touched )) {
       this.status = 'lost';
-      lives = lives-1;
+      lives = lives < 1 ? lives + 3 : lives - 1;
       music.pause();
       death.play();
       livesShown.innerHTML = "lives: " + lives;
@@ -396,8 +397,3 @@ const actorDict = {
   '|': FireRain
 };
 const parser = new LevelParser(actorDict);
-if (lives < 0)  {
-  music.currentTime = 0;
-  music.pause();
-
-}
