@@ -157,7 +157,8 @@ class Level {
 }
 const obstaclesDict = {
   'x': 'wall',
-  '!': 'lava'
+  '!': 'lava',
+  'L': 'lives'
 };
 
 class LevelParser {
