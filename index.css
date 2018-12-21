@@ -42,7 +42,7 @@
 }
 
 .lava {
-  background-image: url(./img/lava.gif);
+  background-image: url(https://github.com/krodetsa/t-rex_game.github.io/blob/master/img/lava.gif?raw=true);
   background-repeat: no-repeat;
 
 }
@@ -68,7 +68,7 @@
 }
 
 .coin {
-  background-image: url(./img/bone.png);
+  background-image: url(https://github.com/krodetsa/t-rex_game.github.io/blob/master/img/bone.png?raw=true);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -76,7 +76,7 @@
 }
 
 .player {
-  background-image: url(./img/8bit-TRex.png);
+  background-image: url(https://raw.githubusercontent.com/krodetsa/t-rex_game.github.io/master/img/8bit-TRex.png);
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
@@ -86,7 +86,7 @@
 }
 .player::before{
   display: inline-block;
-  background-image: url(./img/8bit-TRex.gif);
+  background-image: url(https://raw.githubusercontent.com/krodetsa/t-rex_game.github.io/master/img/8bit-TRex.gif);
   background-position:-50px 2px;
   background-size: cover;
   margin-left: 24px;
