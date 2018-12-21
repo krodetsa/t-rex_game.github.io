@@ -25,7 +25,8 @@
 }
 
 .background {
-  background: rgb(52, 166, 251);
+  /*background: rgb(52, 166, 251);*/
+  backgrond: url(https://github.com/krodetsa/t-rex_game.github.io/blob/master/img/tumblr_ne869oUo1Z1scncwdo1_500.gif?raw=true);
   table-layout: fixed;
   border-spacing: 0;
 }
