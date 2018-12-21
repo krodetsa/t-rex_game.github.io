@@ -1,6 +1,7 @@
 'use strict';
 
-const levelpassed = document.getElementById("levelpassed")
+const levelpassed = document.getElementById("levelpassed");
+var background = document.getElementsByClassName("background");
 var lives = 3;
 const coin = document.getElementById("coin")
 const startThis = document.getElementById("game")
@@ -138,6 +139,7 @@ class Level {
       music.pause();
       death.play();
       livesShown.innerHTML = "lives: " + lives;
+	background[0].style.background = "tomato";
     }
     if (touched === 'coin' && actor.type === 'coin') {
       this.removeActor(actor);
