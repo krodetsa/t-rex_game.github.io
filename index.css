@@ -6,6 +6,20 @@
   text-align: center;
   height: 300px;
 }
+#won {
+  margin-top: 100px;
+  width: 50%;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 26px;
+  text-align: center;
+  background-image: url(./img/1.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#won p {
+  margin-bottom: 30px;
+}
 .start{
   display: inline-block;
   margin-top: 100px;
