@@ -248,7 +248,7 @@ function runGame(plans, Parser, Display) {
           }
         });
     }
-    startLevel(5);
+    startLevel(1);
   });
 
 }
