@@ -6,9 +6,10 @@ const wobbleSpeed = 8, wobbleDist = 0.07;
 const playerXSpeed = 6;
 const gravity = 50;
 const jumpSpeed = 17;
-const jump = document.getElementById("jump")
-const death = document.getElementById("death")
-const music = document.getElementById("music")
+const jump = document.getElementById("jump");
+const death = document.getElementById("death");
+const music = document.getElementById("music");
+const wonTheGame = document.getElementById("won");
 
 function elt(name, className) {
   var elt = document.createElement(name);
@@ -242,10 +243,12 @@ function runGame(plans, Parser, Display) {
             startLevel(n + 1);
           } else {
             done();
+            wonTheGame.classList.remove('hidden');
+            livesShown.classList.add('hidden');
           }
         });
     }
-    startLevel(0);
+    startLevel(1);
   });
 
 }
