@@ -91,37 +91,61 @@
 }
 
 .player {
+  background-image: url(./img/dead.png);
   background-image: url(https://raw.githubusercontent.com/krodetsa/t-rex_game.github.io/master/img/8bit-TRex.png);
   -webkit-transform: scaleX(-1);
       -ms-transform: scaleX(-1);
           transform: scaleX(-1);
-  background-position:-28px 0px;
+  background-position:-40px 0px;
   background-size: cover;
   display: inline-block;
 }
 .player::before{
   display: inline-block;
   background-image: url(https://raw.githubusercontent.com/krodetsa/t-rex_game.github.io/master/img/8bit-TRex.gif);
-  background-position:-50px 2px;
+  background-position:-63px 2px;
   background-size: cover;
   margin-left: 24px;
   height: 45px;
   width: 35px;
   content: " ";
 }
+.player::after{
+  display: inline-block;
+      background-image: url(https://raw.githubusercontent.com/krodetsa/t-rex_game.github.io/master/img/8bit-TRex.gif);
+      background-position: 0px 2px;
+      background-size: cover;
+      height: 45px;
+      position: relative;
+      width: 31px;
+      content: " ";
+      top: -55px;
+      right: 31px;
+}
 
 .lost .player {
-  display: inline-block;
   background-image: url(./img/dead.png);
-  background-repeat: no-repeat;
 }
 .won .player {
   display: none
 }
+.lost .player::after{
+  display: inline-block;
+  background-image: url(./img/dead.png);
+  background-position: -8px 6px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  width: 31px;
+  content: " ";
+  top: -55px;
+  right: 31px;
+}
 .lost .player::before{
   display: inline-block;
-  background-image: url(./img/8bit-TRex.gif);
-  background-position:-50px 2px;
+  background-image: url(./img/dead.png);
+  background-position:-60px 2px;
   background-size: cover;
   margin-left: 24px;
   height: 45px;

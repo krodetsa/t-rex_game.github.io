@@ -81,7 +81,7 @@ class DOMDisplay {
   }
 
   scrollPlayerIntoView() {
-    var width = this.wrap.clientWidth;
+    var width = this.wrap.clientWidth - 150;
     var height = this.wrap.clientHeight;
     var margin = width / 3;
 
