@@ -50,7 +50,7 @@
 }
 
 .fireball {
-  background-image: url(https://ubisafe.org/images/transparent-flame-8-bit-4.gif);
+  background-image: url(./img/flame.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
