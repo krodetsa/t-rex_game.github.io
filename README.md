@@ -1,1 +1,5 @@
-Play here http://htmlpreview.github.io/?https://github.com/krodetsa/t-rex_game.github.io/blob/master/index.html
+Pure JS 2D platformer with ugly T-rex starring.
+
+Play here https://clck.ru/U2FnT
+
+Basic controls are keyboard arrows.
